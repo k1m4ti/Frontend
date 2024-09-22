@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.4.29"
+    "@vue/apollo-composable": "^4.2.1",
+    "echarts": "^5.5.1",
+    "vue": "^3.4.29",
+    "vue-echarts": "^7.0.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",

@@ -1,6 +1,27 @@
 import './assets/main.css'
-
-import { createApp } from 'vue'
+import { createApp, provide, h } from 'vue'
 import App from './App.vue'
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
+import { DefaultApolloClient } from '@vue/apollo-composable'
 
-createApp(App).mount('#app')
+//zmienic na rzeczywisty backend
+const httpLink = createHttpLink({
+  uri: 'http://localhost:8000/graphql',
+}) 
+
+const cache = new InMemoryCache()
+
+const apolloClient = new ApolloClient({
+  link: httpLink,
+  cache,
+})
+
+const app = createApp({
+  setup () {
+    provide(DefaultApolloClient, apolloClient)
+  },
+
+  render: () => h(App),
+})
+
+app.mount('#app')
